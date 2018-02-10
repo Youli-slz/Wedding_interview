@@ -1,0 +1,93 @@
+<!--基本信息-->
+<view class="basic">
+    <view class="avatar_pic" bindtap="getAvatarPic">
+        <image id="avatar" src="{{personImg}}" mode="aspectFill"/>
+    </view>
+    <view class="NoP">
+        <view class="name">
+            <view style="display:flex;">
+                <view class="integrant">*</view>
+                <view class="word">姓名</view>
+            </view>
+            <input type="text" class="word" id="name" placeholder="请输入姓名" placeholder-class="instyle" bindinput="getInputData" value="{{cardInfo.name}}"/>
+        </view>
+        <view class="phone">
+            <view style="display: flex;">
+                <view class="integrant">*</view>
+                <view class="word">手机</view>
+            </view>
+            <input wx:if="{{isnew == 0}}" type="number" id="phone" class="word" placeholder="请输入手机号" placeholder-class="instyle" bindinput="getInputData" maxlength="11" />
+            <view class="word" wx:if="{{isnew == 1}}"  bindtap="updatePhone">
+                {{cardInfo.phone}} 
+                <image wx:if="{{isnew == 1}}" id="edit_phone" src="../../assets/image/edit.png"/>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!--验证码 -->
+<view class="check_code" wx:if="{{isnew == 0}}">
+    <view class="word" id="code_name">验证码</view>
+    <input id="code" class="word" type="number" placeholder="请输入验证码" placeholder-class="instyle" bindinput="getInputData" />
+    <view wx:if="{{!isGetCode}}" class="check_button" bindtap="codeCountDown"><view class="word_1">获取验证码</view></view>
+    <view wx:else class="click_check_button"><view class="word_1">{{countDownTime}}s后重发</view></view>
+</view>
+
+<!--从业-->
+<view class="about_job">
+        <picker bindchange="bindJob" value="{{Jindex}}" range="{{job}}">
+    <view class="job">
+        <view style="display: flex;">
+            <view class="integrant">*</view>
+            <view class="word">职位</view>
+        </view>
+        <!--<input id="job" class="word" type="text" placeholder="请输入职位" placeholder-class="instyle" bindinput="getInputData" value="{{cardInfo.professional}}" />-->
+
+            <view class="word">
+                {{job[Jindex]}}
+            </view>
+             
+    </view>
+     </picker> 
+    <view class="work_time">
+        <view style="display: flex;">
+            <view class="integrant">*</view>
+            <view class="word">从业年限</view>
+        </view>
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{workTime}}">
+            <view class="word">
+                {{workTime[index]}}
+            </view>
+        </picker>
+    </view>
+</view>
+<view class="about_job">
+<!--公司-->
+<view class="company">
+    <view class="word">公司</view>
+    <input id="company" class="word" type="text" placeholder="请输入公司名称" placeholder-class="instyle" value="{{cardInfo.company}}" bindinput="getInputData" />
+</view>
+
+<!--公司地址-->
+<view class="company_ads">
+    <view class="word">地址</view>
+    <input id="company_ads" class="word" type="text" placeholder="定位公司地址" placeholder-class="instyle" value="{{cardInfo.site}}" bindtap="getLocation" />
+    <!--<textarea placeholder="请填写详细地址" id="address" placeholder-class="instyle" maxlength="90" value="{{site}}" bindinput="getInputData" />
+    <view class="btn_ads" bindtap="getLocation">
+        定位当前位置
+    </view>-->
+</view>
+</view>
+
+<!--自评-->
+<view class="say_somthing">
+    <textarea placeholder="自我介绍(最多50字)" id="accessment" placeholder-class="instyle" maxlength="50" value="{{cardInfo.accessment}}" bindinput="getInputData" />
+</view>
+
+<!--保存按钮-->
+<view class="save_btn" bindtap="submit" wx:if="{{isUpdate}}">
+    保存
+</view>
+<view class="save_btn no_update" wx:else>
+    保存
+</view>

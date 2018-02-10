@@ -1,0 +1,133 @@
+<!--已创建我的名片，显示我的名片信息-->
+<view class="my" wx:if="{{!isempty}}">
+    <view class="MyBack" style="background:url('https://oss.ririyuedu.com/back_1001.png?imageMogr2/size-limit/500k') no-repeat; background-size:{{winWidth}}px {{460/750*winWidth}}px; ">
+        <view class="MyAvatar">
+            <view style="width:129rpx;height:129rpx;border-radius:50%;border:2rpx solid #e5e5e5;overflow: hidden;"><image id="avatar" src="{{cardInfo.pic}}" mode="aspectFill" /></view>
+        </view>
+        <view class="edit_btn" bindtap="createCard" data-isnew="1">
+            <image id="edit_btn" src="../../assets/image/update.png" />
+        </view>
+        <view class="MyName">
+            {{cardInfo.name}}
+        </view>
+        <view class="MyJT">
+            <view class="My_job">{{cardInfo.professional}}</view>
+            <view class="My_time">(从业{{cardInfo.year}})</view>
+        </view>
+        <view class="MyCompany">
+            <image id="company" src="../../assets/image/card_08.png" />
+            <view class="company" wx:if="{{cardInfo.company}}">{{cardInfo.company}}</view>
+            <view class="company if_no" wx:else>暂时没有公司</view>
+        </view>
+        <view class="MyInterview">
+            <view class="interview" wx:if="{{cardInfo.accessment}}">{{cardInfo.accessment}}</view>
+            <view class="interview if_no" wx:else>这家伙很懒,什么都没有留下...</view>
+        </view>
+        <view class="operand">
+            <view style="height:100%;width:1rpx;"></view>
+            <view class="operandN">
+                <view class="type" style="color: #fff;margin-right:10rpx;opacity: 1;" >人气</view> 
+                <view class="fameNum">{{cardInfo.fame}}</view>
+            </view>
+            <view class="c_line"></view>
+            <view class="operandN">
+                <view class="type"  style="color: #fff;margin-right:10rpx; opacity: 1;">点赞</view> 
+                <view class="lickNum">{{cardInfo.lick}}</view>
+            </view>
+            <view style="height:100%;width:1rpx;"></view>
+        </view>
+    </view>
+
+
+
+    <view class="contact">
+        <view class="phone">
+            <image id="con_phone" src="../../assets/image/phone_1.png" />
+            <view class="phone_word">{{cardInfo.phone}}</view>
+        </view>
+        <view class="address">
+            <image id="con_address" src="../../assets/image/address_1.png" />
+            <view class="site_word" wx:if="{{cardInfo.site}}">{{cardInfo.site}}</view>
+            <view class="site_word" wx:else>暂时没有地址</view>
+        </view>   
+    </view>
+
+    <view class="sendorsave">
+        <view class="ss_box">
+            <button id="share_btn" open-type="share"><image id="send" src="../../assets/image/card1_03.png" /></button>
+            <button id="share_btn" bindtap="getQRCode"><image id="save" src="../../assets/image/card1_05.png" /></button>
+        </view>
+    </view>
+
+    <view class="banner" bindtap="toMini"><image id="banner" src="../../assets/image/banner.png" mode="aspectFit"/></view>
+    
+    <view class="today">
+        <view class="time">今日</view>
+        <view class="add_img" bindtap='shareWith'><image id="add_image" src="../../assets/image/card_32.png" /></view>
+    </view>
+    <view class="dynamic_list">
+        <view class="trends_list" wx:for="{{dynamicList}}" wx:key="{{index}}">
+            <view class="row">
+                <view class="Time">
+                    <view class="date">
+                        <view class="day">{{item.create_at.day}}</view>
+                        <view class="month"> {{item.create_at.month}}月</view>
+                    </view>
+                </view>
+                <view class="trends_content">
+                    <view class="content_word">
+                        {{item.content}}
+                    </view>
+                    <view class="clock">{{item.create_at.time}}</view>
+                    <view class="content_pic" wx:if="{{item.pic.type == 'video'}}" bindtap="videoPlay" data-id="{{item.id}}">
+                        <view wx:if="{{curr_id == item.id}}" >
+                            <video src="{{item.pic.picList[0]}}" id="myVideo" control='false' style="width:500rpx;height:270rpx;" bindended="videoEnd"></video>
+                        </view>
+                        <view wx:else class="box">
+                            <image id="porster" src="{{item.pic.picList[0]+ '?vframe/png/offset/1'}}"  style="width:500rpx;height:270rpx;" mode="aspectFill"/>
+                            <view class="black"><image src="../../assets/image/play.png" id="play" style="width:80rpx;height:80rpx;"/></view>
+                        </view>
+                    </view>
+                    <view class="content_pic" wx:else>
+                        <view wx:for="{{item.pic.picList}}" wx:for-item="child" wx:key="{{index}}"  class="content_image" style="width:{{winWidth*0.8*0.28}}px;height:{{winWidth*0.8*0.28}}px;">
+                            <image src="{{child}}"  mode="aspectFill" style="width:{{winWidth*0.8*0.28}}px;height:{{winWidth*0.8*0.28}}px;" bindtap="previewImg" data-img="{{child}}" data-imgList="{{item.pic}}"/>
+                        </view>
+                    </view>
+
+                </view>
+            </view>
+            <view style="display: flex;justify-content: flex-end; margin-left:90rpx;">
+                <view class="upvote" wx:if="{{dynamicList.length != index+1}}" style="padding-right:{{winWidth*0.1226666666666666666666666666666666666}}px">
+                    <view class="delect" bindtap="IsDelectDynamic" data-dynamic="{{item.id}}">删除</view>
+                    <view class="operand_1" wx:if="{{item.is_click == 0}}" id="upvote" bindtap="reqLickDynamic" data-DynamicId="{{item.id}}" data-isLick="{{item.is_click}}" >
+                        <view class="img_style"><image id="lick" src="../../assets/image/card_36.png" /></view>
+                        <view class="type"> {{item.lick}}</view>
+                    </view>
+                    <view class="operand_1" wx:else id="upvote" bindtap="reqLickDynamic" data-DynamicId="{{item.id}}" data-isLick="{{item.is_click}}">
+                        <view class="img_style"><image id="lick" src="../../assets/image/select_lick.png" /></view>
+                        <view class="type" style="color: #ff1c63;"> {{item.lick}}</view>
+                    </view>
+                </view>
+                <view class="upvote_last" wx:else style="padding-right:{{winWidth*0.1226666666666666666666666666666666666}}px">
+                    <view class="delect" bindtap="IsDelectDynamic" data-dynamic="{{item.id}}">删除</view>
+                    <view class="operand_1" wx:if="{{item.is_click == 0}}" id="upvote" bindtap="reqLickDynamic" data-DynamicId="{{item.id}}" data-isLick="{{item.is_click}}">
+                        <view class="img_style"><image id="lick" src="../../assets/image/card_36.png" /></view>
+                        <view class="type"> {{item.lick}}</view>
+                    </view>
+                    <view class="operand_1" wx:else id="upvote" bindtap="reqLickDynamic" data-DynamicId="{{item.id}}" data-isLick="{{item.is_click}}">
+                        <view class="img_style"><image id="lick" src="../../assets/image/select_lick.png" /></view>
+                        <view class="type" style="color: #ff1c63;"> {{item.lick}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!--第一次进入页面为空， 需要创建页面-->
+<view wx:else> 
+    <view class="isempty">
+        <image id="empty" src="../../assets/image/empty.png" />
+        <view class="create"><view id="create" bindtap="createCard" data-isnew="0" >创建名片</view></view>
+    </view>
+</view>

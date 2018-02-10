@@ -1,0 +1,64 @@
+<import src="../../components/wxSortPickerView/wxSortPickerView.wxml"/>
+
+
+<!--搜索栏-->
+<!--<view class="search">
+        <image id="icon_search" src="../../assets/image/card_16.png" />
+        <input id="in_search" class="word" type="text" placeholder="搜索" placeholder-class="instyle" maxlength="20"/>
+</view>-->
+<view class="banner"  bindtap="toMini"><image id="banner" src="../../assets/image/banner.png" mode="aspectFit"/></view>
+
+<view class="own_card">
+    <view class="own_title"><image  src="../../assets/image/hunli_1.png" style="width:152rpx;height:37rpx;"/></view>
+    <view class="own_title" bindtap="toCreate" data-isnew="0" wx:if="{{!isCreateCard}}"><image src="../../assets/image/hunli_3.png" style="width:193rpx;height:37rpx;"/></view>
+    <view class="own_title" bindtap="toMyCard" data-isnew="1" wx:else><image src="../../assets/image/hunli_2.png" style="width:160rpx;height:37rpx;"/></view>
+</view>
+
+<!--新名片列表-->
+<view class="new_card_list">
+    <view class="cardList" wx:for="{{new_list}}" wx:for-item="child" wx:key="{{index}}" wx:if="{{new_list.length != 0}}">
+        <view class="new_card" bindtap="toDesc" data-cardId="{{child.id}}" style="height:{{190/750*winWidth}}px;background:url('https://oss.ririyuedu.com/backL1.png?imageMogr2/size-limit/500k') no-repeat;background-size:{{winWidth}}px {{190/750*winWidth}}px;" >
+            <view class="new_info">
+                <view class="card_pic">
+                    <image id="card_pic" src="{{child.pic}}" mode="aspectFill"/>
+                </view>
+                <view class="card_info" style="width:{{460/750*winWidth}}px">
+                    <view class="info_1">
+                        <view class="name">{{child.name}}</view>
+                    </view>
+                    <view class="info_2">
+                        <view class="job"><image src="{{child.icon}}" style="width:32rpx;height:32rpx;margin-right:7px;" />{{child.professional}}</view>
+                        <view class="work_time">从业{{child.year}}</view>
+                    </view>
+                    <view class="info_3">
+                        <view class="company"><image src="../../assets/image/card_081.png" style="width:34rpx;height:35rpx;margin-right:7px;"/></view>
+                        <view class="company_name" wx:if="{{child.company}}">{{child.company}}</view>
+                        <view class="company_name" wx:else>暂时没有公司</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="operand">
+            <view style="height:100%;width:2rpx;"></view>
+            <view class="operandN">
+                <view class="type" style="color: #e37fa2;margin-right:10rpx;" >人气</view> 
+                <view class="fameNum">{{child.fame}}</view>
+            </view>
+            <view class="c_line"></view>
+            <view class="operandN">
+                <view class="type"  style="color: #e37fa2;margin-right:10rpx;">点赞</view> 
+                <view class="lickNum">{{child.lick}}</view>
+            </view>
+            <view style="height:100%;width:2rpx;"></view>
+        </view>
+    </view>
+    <view class="empty" wx:if="{{new_list.length == 0}}">
+        <image id="noCard" src="../../assets/image/noCard.png"  />
+    </view>
+</view>
+<view class="version">
+    v {{version}}
+</view>
+
+<!--原有名片列表-->
+<!--<template is="wxSortPickerView" data="{{wxSortPickerData}}"/>-->

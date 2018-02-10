@@ -1,0 +1,410 @@
+/* page{
+    background-color: #fff9fb;
+} */
+
+
+.type{
+    font-size: 26rpx;
+    color: #5c5c5c;
+}
+
+.sendorsave{
+    height: 90rpx;
+    border-top: 10rpx solid #fff9fb;
+    border-bottom: 10rpx solid #fff9fb; 
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left:20rpx;
+    padding-right: 20rpx;
+}
+
+#banner{
+    width: 100%;
+    height: 160rpx;
+}
+
+.banner{
+    height: 160rpx;
+     border-bottom: 10rpx solid #fff9fb; 
+}
+
+.ss_box{
+    display: flex;
+    justify-content: space-around;
+}
+
+#send, #save{
+    width: 192rpx;
+    height: 43rpx;
+}
+
+.today{
+    display: flex;
+    padding-left: 30rpx;
+    padding-top: 30rpx;
+    background-color: #fff;
+}
+
+.today .time{
+    font-size: 36rpx;
+    color: #1d1d1d;
+    width: 90rpx;
+}
+
+#add_image{
+    width: 130rpx;
+    height: 130rpx;
+}
+
+.trends_list{
+    padding-left: 30rpx;
+    /* padding-right: 30rpx; */
+    padding-top: 40rpx;
+    background-color: #fff;
+}
+
+.row{
+    display: flex;
+}
+
+/* .date{
+    display: flex;
+    align-items: baseline;
+} */
+
+.Time{
+    width: 90rpx;
+}
+.day{
+    font-size: 46rpx;
+    color:#1d1d1d;
+    vertical-align:bottom;
+}
+.month{
+    font-size: 24rpx;
+    color: #1d1d1d;
+}
+.clock{
+    font-size: 26rpx;
+    color: #5c5c5c;
+    height: 70rpx;
+    line-height: 70rpx;
+}
+
+.trends_content{
+    width: 80%;
+}
+
+.content_word{
+    font-size: 30rpx;
+    color: #1d1d1d;
+    margin-top: 6rpx;
+}
+
+ .content_pic{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+} 
+
+ /* .content_pic image{
+     border: 6rpx solid #fff; 
+}  */
+
+.content_image{
+    border: 6rpx solid #fff;
+}
+
+ .upvote{
+    height:80rpx;
+    width:620rpx;
+    border-bottom: 2rpx solid #e5e5e5;
+    display:flex;
+    justify-content:space-between;
+    align-items:center; 
+    /* padding-right: 70rpx; */
+} 
+
+ .upvote_last{
+    height:80rpx;
+    width:620rpx;
+    /* border-bottom: 2rpx solid #e5e5e5; */
+    display:flex;
+    justify-content:space-between;
+    align-items:center; 
+    /* padding-right: 70rpx; */
+} 
+
+.isempty{
+    text-align: center;
+    height: 384rpx;
+    margin-top: 200rpx;
+}
+#empty{
+    width: 480rpx;
+    height: 384rpx;
+}
+#create{
+    width: 360rpx;
+    height: 80rpx;
+    background-color: #ff1c63;
+    color: #fff;
+    border-radius: 40rpx;
+    font-size: 36rpx;
+    line-height: 80rpx;
+    text-align: center;
+    margin:auto;
+}
+.create{
+    margin-top: 286rpx;
+    width: 100%;
+    text-align: center;
+}
+
+#share_btn{
+    margin-left: 0rpx;
+    margin-right: 0rpx;
+    background-color: #fff;
+    line-height: 0rpx;
+}
+#share_btn::after{
+    border: 0rpx solid #fff;
+}
+
+#update{
+    width: 38rpx;
+    height: 38rpx;
+}
+
+.if_no{
+    color: #c5c5c5;
+}
+
+
+.line{
+    display: flex;
+}
+
+
+
+.img_style{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.box{
+  transform:translate(0,0);
+}
+
+.black{
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 500rpx;
+    height: 270rpx;
+    position: fixed;
+    top:0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delect{
+    font-size: 26rpx;
+    color: #ff1c63;
+}
+
+.prefession{
+    display: flex;
+    align-items: center;
+}
+
+/* /===我的信息显示的部分css===/ */
+.MyBack{
+    /* height: 460rpx; */
+    width: 100%;
+    background-color: #ef8bae;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+}
+
+.MyAvatar{
+    width: 100%;
+    text-align: center;
+    height: 130rpx;
+    padding-top: 14rpx;
+    display: flex;
+    justify-content: center;
+}
+#avatar{
+    border-radius: 50%;
+    width: 130rpx;
+    height: 130rpx;
+    /* border: 2rpx solid #e5e5e5; */
+}
+
+.MyName{
+    color: #fff;
+    font-size: 36rpx;
+    width: 100%;
+    text-align: center;
+    margin-top: 3rpx;
+    text-shadow:3rpx 3rpx 1rpx #cb7693;
+}
+
+.MyJT{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rpx;
+}
+.My_job{
+    text-shadow:3rpx 3rpx 1rpx #cb7693;
+    color: #fff;
+    font-size: 32rpx;
+    margin-right: 25rpx;
+}
+.My_time{
+    text-shadow:3rpx 3rpx 1rpx #cb7693;
+    color: #fff;
+    font-size: 28rpx;
+}
+
+.MyCompany{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rpx;
+}
+#company{
+    width: 31rpx;
+    height: 29rpx;
+    margin-right: 10rpx;
+}
+.company{
+    font-size: 28rpx;
+    color: #fff;
+    text-shadow:3rpx 3rpx 1rpx #cb7693;
+}
+
+.MyInterview{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:3rpx;
+    font-size: 28rpx;
+    /* margin-bottom: 10rpx; */
+     padding-bottom: 20rpx; 
+}
+.interview{
+    color: #fff;
+    text-shadow:3rpx 3rpx 1rpx #cb7693;
+    font-size: 28rpx;
+    width: 690rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    text-align: center;
+     /* padding-bottom: 10rpx;  */
+    /* margin-bottom: 10rpx; */
+}
+ .dynamic_list{
+    padding-bottom: 30rpx;
+} 
+.operand{
+    height: 80rpx;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: rgba(255, 255, 255, 0.6); */
+     background-color: #fb7ca8; 
+}
+.operandN{
+    display: flex;
+    align-items: center;
+
+}
+.fameNum, .lickNum{
+    font-size: 36rpx;
+    color: #fff;
+}
+.c_line{
+    width: 2rpx;
+    height: 30rpx;
+    background-color: #fff;
+}
+
+.contact{
+    width: 100%;
+    height: 130rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #fff;
+}
+.phone{
+    margin-left: 30rpx;
+    display: flex;
+    align-items: center;
+    padding-top: 10rpx;
+}
+#con_phone{
+    width: 32rpx;
+    height: 31rpx;
+    margin-right: 24rpx;
+}
+.phone_word{
+    font-size: 28rpx;
+    color: #5c5c5c;
+}
+.address{
+    margin-left: 30rpx;
+    display: flex;
+    align-items: center;
+    padding-bottom: 10rpx;
+}
+#con_address{
+    width: 32rpx;
+    height: 31rpx;
+    margin-right: 24rpx;
+}
+.site_word{
+    font-size: 28rpx;
+    color: #5c5c5c;
+    width: 80%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.edit_btn{
+    position: absolute;
+    top: 40rpx;
+    right: 30rpx;
+}
+#edit_btn{
+    width: 32rpx;
+    height: 32rpx;
+}
+
+#like{
+    width: 30rpx;
+    height: 28rpx;
+    margin-right: 10rpx;
+}
+
+#lick{
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 10rpx;
+}
+
+ .operand_1, .operand_2, .operand_3{
+    display: flex;
+} 

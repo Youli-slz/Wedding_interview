@@ -1,0 +1,21 @@
+<view class="line"></view>
+<view class="share_content">
+    <textarea id="shareWords" placeholder="写点什么..." placeholder-class="inStyle" maxlength="1000" bindinput="getInputData"/>
+</view>
+
+<view class="share_pic">
+    <view class="pic" wx:for="{{picOrVideo}}" wx:key="{{index}}">
+        <image wx:if="{{fileType == 'image'}}" src="{{item}}" mode="aspectFill"/>
+        <video wx:else src="{{item}}"></video>
+        <image id="delect" src="../../assets/image/ph_03.png" bindtap="delPic" data-index="{{index}}"/>
+    </view>
+    <view class="pic" wx:if="{{len !== 9 && fileType == 'image'}}">
+        <picker bindchange="checkAdd" value="{{index}}" range="{{chooseMethod}}">
+            <image src="../../assets/image/ph_07.png" />
+        </picker>
+    </view>
+</view>
+
+<view class="btn_send" bindtap="JudgeContent">
+    发   送
+</view>

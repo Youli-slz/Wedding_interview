@@ -1,0 +1,155 @@
+<!--<view class = "back" style="{{winWidth*0.96}}px;background:url('https://oss.ririyuedu.com/card_89.png?imageMogr2/size-limit/500k') no-repeat;background-size:cover;">
+    <view class="person_detail">
+        <view class="detail_box">
+            <view class="avatar_pic">
+                <image wx:if="{{cardInfo.pic}}" id="avatar" src="{{cardInfo.pic}}" mode="aspectFill"/>
+                <image wx:else id="avatar" src="../../assets/image/t_03.png"/>
+            </view>
+            <view class="per_simple">
+                <view class="simple_1">
+                    <view class="word_1">{{cardInfo.name}}</view>
+                    <view class="word_2">
+                    <view class=""><image src="{{cardInfo.icon}}" style="width:32rpx;height:32rpx;margin-right:16rpx;"/>{{cardInfo.professional}}</view>
+                    <view class="s_line"></view>
+                    <view>从业{{cardInfo.year}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="company">
+            <view class="img_style"><image id="company" src="../../assets/image/card_07.png" /></view>
+            <view class="name" wx:if="{{cardInfo.company}}">{{cardInfo.company}}</view>
+            <view class="name if_no" wx:else>暂时没有公司</view>
+        </view>
+        <view class="interview">
+            <view class="inter_title">自我介绍：</view>
+            <view class="inter_content" wx:if="{{cardInfo.accessment}}">{{cardInfo.accessment}}</view>
+            <view class="inter_content if_no" wx:else>这个家伙很懒，什么都没有留下...</view>
+        </view>
+    </view>
+    <view class="operand">
+        <view class="oper_box">
+            <view class="operand_1">
+                <view class="img_style"><image id="like" src="../../assets/image/fire.png" /></view>
+                <view class="type" style="color: #ff1c63;">人气 {{cardInfo.fame}}</view>
+            </view>
+            <view class="operand_1">
+                <view class="img_style"><image id="lick" src="../../assets/image/select_lick.png" /></view>
+                <view class="type" style="color: #ff1c63;">点赞 {{cardInfo.lick}}</view>
+            </view>
+        </view>
+    </view>
+</view>-->
+<view class="OthBack" style="background:url('https://oss.ririyuedu.com/back_1002.png?imageMogr2/size-limit/500k') no-repeat; background-size:{{winWidth}}px {{560/750*winWidth}}px;">
+    <view class="OthAvatar">
+        <view style="width:129rpx;height:129rpx;border-radius:50%;border:2rpx solid #e5e5e5;overflow: hidden;"><image id="avatar" src="{{cardInfo.pic}}" mode="aspectFill" /></view>
+    </view>
+    <view class="OthName">
+        {{cardInfo.name}}
+    </view>
+    <view class="OthJT">
+        <view class="Oth_job">{{cardInfo.professional}}</view>
+        <view class="Oth_time">(从业{{cardInfo.year}})</view>
+    </view>
+    <view class="OthCompany">
+        <image id="company" src="../../assets/image/card_08.png" />
+        <view class="company" wx:if="{{cardInfo.company}}">{{cardInfo.company}}</view>
+        <view class="company if_no" wx:else>暂时没有公司</view>
+    </view>
+    <view class="OthInterview">
+        <view class="interview" wx:if="{{cardInfo.accessment}}">{{cardInfo.accessment}}</view>
+        <view class="interview" wx:else>这家伙很懒,什么都没有留下...</view>
+    </view>
+    <view class="operand">
+        <view style="height:100%;width:1rpx;"></view>
+        <view class="operandN">
+            <view class="fameNum">{{cardInfo.fame}}</view>
+            <view class="fameTitle" >人 气</view> 
+        </view>
+        <view class="c_line"></view>
+        <view class="operandN">
+            <view class="lickNum">{{cardInfo.lick}}</view>
+            <view class="lickTitle">点 赞</view> 
+        </view>
+        <view style="height:100%;width:1rpx;"></view>
+    </view>
+</view>
+
+
+<view class="banner" bindtap="toMini"><image id="banner" src="../../assets/image/banner.png" mode="aspectFit"/></view>
+
+<view class="dynamic_list">
+<view class="trends_list" wx:for="{{dynamicList}}" wx:key="{{index}}" >
+    <view class="row">
+        <view class="Time">
+            <view class="date">
+                <view class="day">{{item.create_at.day}}</view>
+                <!--<view style="margin-left:10rpx;margin-right:10rpx;">·</view>-->
+                <view class="month"> {{item.create_at.month}}月</view>
+            </view>
+        </view>
+        <view class="trends_content">
+            <view class="content_word">
+                {{item.content}}
+            </view>
+            <view class="clock">{{item.create_at.time}}</view>
+            <view class="content_pic" wx:if="{{item.pic.type == 'video'}}" bindtap="videoPlay" data-id="{{item.id}}">
+                <view wx:if="{{curr_id == item.id}}" >
+                    <video src="{{item.pic.picList[0]}}" id="myVideo" control='false' style="width:500rpx;height:270rpx;" bindended="videoEnd"></video>
+                </view>
+                <view wx:else class="box">
+                    <image id="porster" src="{{item.pic.picList[0]+ '?vframe/png/offset/1'}}"  style="width:500rpx;height:270rpx;" mode="aspectFill"/>
+                    <view class="black"><image src="../../assets/image/play.png" id="play" style="width:80rpx;height:80rpx;"/></view>
+                </view>
+            </view>
+            <view class="content_pic" wx:else>
+                <view wx:for="{{item.pic.picList}}" wx:for-item="child" wx:key="{{index}}"  class="content_image" style="width:{{winWidth*0.8*0.28}}px;height:{{winWidth*0.8*0.28}}px;">
+                    <image src="{{child}}"  mode="aspectFill" style="width:{{winWidth*0.8*0.28}}px;height:{{winWidth*0.8*0.28}}px;" bindtap="previewImg" data-img="{{child}}" data-imgList="{{item.pic}}"/>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view style="display: flex;justify-content: flex-end;margin-left:90rpx;">
+        <view class="upvote" wx:if="{{dynamicList.length != index+1}}" style="padding-right:{{winWidth*0.1226666666666666666666666666666666666}}px">
+            <view class="operand_1" wx:if="{{item.is_click == 0}}" id="upvote" bindtap="reqLickDynamic" data-DynamicId="{{item.id}}" data-isLick="{{item.is_click}}">
+                <view class="img_style"><image id="lick" src="../../assets/image/card_36.png" /></view>
+                <view class="type"> {{item.lick}}</view>
+            </view>
+            <view class="operand_1" wx:else id="upvote" bindtap="reqLickDynamic" data-DynamicId="{{item.id}}" data-isLick="{{item.is_click}}">
+                <view class="img_style"><image id="lick" src="../../assets/image/select_lick.png" /></view>
+                <view class="type" style="color: #ff1c63;"> {{item.lick}}</view>
+            </view>
+        </view>
+        <view class="upvote_last" wx:else style="padding-right:{{winWidth*0.1226666666666666666666666666666666666}}px">
+            <view class="operand_1" wx:if="{{item.is_click == 0}}" id="upvote" bindtap="reqLickDynamic" data-DynamicId="{{item.id}}" data-isLick="{{item.is_click}}">
+                <view class="img_style"><image id="lick" src="../../assets/image/card_36.png" /></view>
+                <view class="type"> {{item.lick}}</view>
+            </view>
+            <view class="operand_1" wx:else id="upvote" bindtap="reqLickDynamic" data-DynamicId="{{item.id}}" data-isLick="{{item.is_click}}">
+                <view class="img_style"><image id="lick" src="../../assets/image/select_lick.png" /></view>
+                <view class="type" style="color: #ff1c63;"> {{item.lick}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+</view>
+
+<view class="emptyDynamic" wx:if="{{dynamicList.length == 0}}">
+    暂时没有动态~
+</view>
+<view style="width:100%;height:98rpx;bakcground-color:#fff;padding-bottom:2rpx"></view>
+
+<view class="menu">
+    <view class="connection">
+        <view class="menu_phone" bindtap="callPhone" data-phone="{{cardInfo.phone}}">
+            <image id="menu" src="../../assets/image/phone.png" />
+            <view class="menu_word">电话</view>
+        </view>
+        <view class="menu_address" bindtap="openMap">
+            <image id="menu" src="../../assets/image/address.png" />
+            <view class="menu_word">地址</view>
+        </view>
+    </view>
+    <button id="share_btn" open-type="share">分享</button>
+</view>
+

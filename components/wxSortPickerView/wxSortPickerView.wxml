@@ -1,0 +1,53 @@
+
+<template name="wxSortPickerView">
+    <scroll-view class="wxSortPickerViewList" scroll-y="true"  bindscrolltoupper="wxSortPickerViewUpper" bindscrolltolower="wxSortPickerViewLower" bindscroll="wxSortPickerViewScroll" scroll-into-view="{{wxSortPickerData.wxSortPickerViewtoView}}" scroll-top="{{wxSortPickerData.wxSortPickerViewScrollTop}}">
+    <!--<view animation="{{wxSortPickerData.animationData}}" class="wxSortPickerViewList">-->
+        <!--<view class="wxSortPickerViewTag wxSortPickerViewFixedTag">{{wxSortPickerData.nowTag}}</view>-->
+        <block wx:for="{{wxSortPickerData.textData}}" wx:for-item="item" wx:key="">
+            <view id="{{item.tag}}" class="wxSortPickerViewTag" wx:if="{{item.textArray.length != 0}}">{{item.tag}}</view>
+            <template is="wxSortPickerViewItem" data="{{item,RoleType}}" wx:if="{{item.textArray.length != 0}}"/>
+        </block>
+    <!--</view>-->
+    </scroll-view>
+
+</template>
+
+<!--<template name="wxSortPickerViewItem">
+    <view class="guest_list_info">
+        <view wx:for="{{item.textArray}}" wx:for-item="child" wx:key="{{index}}">
+            <view class="guest_line">
+                <view class="line_image"><image src="{{child.pic}}"></image></view>
+                <view class="line_name">{{child.name}}</view>
+            </view>
+            <view wx:if="{{ index < item.textArray.length-1 }}" class="line_con"></view>        
+        </view>
+    </view>
+</template>-->
+
+<template name="wxSortPickerViewItem">
+    <view class="guest_list_info">
+        <view wx:for="{{item.textArray}}" wx:for-item="child" wx:key="{{index}}">
+
+            <view class="new_card" bindtap="toDesc">
+                <view class="card_pic">
+                    <image id="card_pic" src="{{child.pic}}" />
+                </view>
+                <view class="card_info">
+                    <view class="info_1">
+                        <view class="name">{{child.name}}</view>
+                        <view class="job">{{child.job}}</view>
+                        <view class="work_time">从业{{child.time}}</view>
+                    </view>
+                    <view class="info_2">
+                        <view class="img_view"><image id="phone" src="../../assets/image/card_03.png" /></view>
+                        <view class="phone">{{child.phone}}</view>
+                    </view>
+                </view>
+                <view class="share">
+                    <!--<image id="share_card" src="../../assets/image/card1_12.png" />-->
+                </view>
+            </view>
+
+        </view>
+    </view>
+</template>

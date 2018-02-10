@@ -1,0 +1,79 @@
+page{
+    background-color:#fff9fb;
+}
+.job{
+    height: 94rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2rpx solid #e5e5e5;
+    background-color: #fff;
+}
+#phone,#company{
+    text-align: right;
+    font-size: 28rpx;
+    color: #1d1d1d;
+}
+.line{
+    width: 100%;
+    height: 2rpx;
+    background-color: #e5e5e5;
+}
+
+.check_code{
+    background-color: #fff;
+    display: flex;
+    height: 94rpx;
+    margin-bottom: 20rpx;
+    padding-left: 30rpx;
+    align-items: center;
+    justify-content: space-between;
+    /* border-bottom: 20rpx solid #e5e5e5; */
+    margin-bottom: 20rpx;
+}
+
+.check_button{
+    height: 94rpx;
+    width: 200rpx;
+    background-color:#ff85b0;
+    line-height: 94rpx;
+    color: #fff;
+    text-align: center;
+}
+
+.click_check_button{
+    height: 94rpx;
+    width: 200rpx;
+    background-color: #c7c7c7;
+    line-height: 94rpx;
+    color: #fff;
+    text-align: center;
+}
+
+.word_1{
+    font-size: 28rpx;
+    color: #fff;
+}
+
+#code{
+    margin-left: 15rpx;
+}
+
+.word{
+    font-size: 28rpx;
+    color: #1d1d1d;
+}
+
+.save_btn{
+    position: fixed;
+    bottom: 0rpx;
+    width: 100%;
+    color: #fff;
+    background-color: #ff85b0;
+    text-align: center;
+    height: 94rpx;
+    line-height: 94rpx;
+    /* opacity: 0.7; */
+}

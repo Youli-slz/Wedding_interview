@@ -1,0 +1,7 @@
+<view class="first" style="width:{{winWidth}}px;height:{{winHeight-1}}px;background:url('https://oss.ririyuedu.com/tmp/wx339b713b8d607a57.o6zAJs6e4iQOHuo7DT2vSURT-cTg.1914d99785ed1666faa3349111aaae6e.jpg?imageMogr2/size-limit/500k')no-repeat;background-size:{{winWidth}}px {{winHeight}}px;">
+    <view class="countdown">
+        <view class="time">{{countDown}}s </view>
+        <view class="tap" bindtap="toMain">跳过</view>
+    </view>
+    <view class="version">v {{version}}</view>
+</view>

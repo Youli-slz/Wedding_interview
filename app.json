@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/start/start",
+    "pages/cardholder/cardholder",
+    "pages/mycard/mycard",
+    "pages/index/index",
+    "pages/edit/edit",
+    "pages/carddesc/carddesc",
+    "pages/updatephone/updatephone",
+    "pages/sharestatus/sharestatus"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ff85b0",
+    "navigationBarTitleText": "FIND婚礼人",
+    "navigationBarTextStyle": "light",
+    "backgroundColor": "#ff85b0"
+  }
+}
